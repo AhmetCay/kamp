@@ -1,6 +1,24 @@
-<p>Deneme</p>
-<ul>
-	<% @tasks.each do |task| %>
-		<li><%= task.name%><%=link_to "Görüntüle",task_path(task)%></li>
-	<% end %>
-</ul>
+<h1>Listing Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= link_to 'Görüntüle', task %></td>
+        <td><%= link_to 'Düzenle', edit_task_path(task) %></td>
+        <td><%= link_to 'Sil', task, method: :delete, data: { confirm: 'Emin misin?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task', new_task_path %>
